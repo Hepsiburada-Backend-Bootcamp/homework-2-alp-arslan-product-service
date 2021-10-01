@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using ProductApi.Models;
+using ProductNS.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProductApi.Dtos
+namespace ProductNS.Application.Dtos
 {
     public class DtoMapping : Profile
     {

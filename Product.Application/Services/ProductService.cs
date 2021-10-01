@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProductApi.Dtos;
-using ProductApi.Exceptions;
-using ProductApi.Models;
+using ProductNS.Application.Dtos;
+using ProductNS.Application.Exceptions;
+using ProductNS.Domain.Models;
+using ProductNS.Infrastructure.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProductApi.Services
+namespace ProductNS.Application.Services
 {
     public class ProductService : IProductService
     {

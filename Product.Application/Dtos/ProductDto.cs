@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProductApi.Dtos
+namespace ProductNS.Application.Dtos
 {
-    public class CreateProductDto
+    public class ProductDto
     {
-        //TODO: Maybe make category enum
-        [Required, StringLength(56, MinimumLength = 4)]
+        public int Id { get; set; }
         public string Name { get; set; }
-        [Required]
         public string Description { get; set; }
-        [Required]
         public string Category { get; set; }
-        [Required, Range(1, 50000)]
         public double Price { get; set; }
     }
 }

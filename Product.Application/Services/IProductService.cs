@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ProductApi.Dtos;
-using ProductApi.Models;
+﻿using ProductNS.Application.Dtos;
+using ProductNS.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProductApi.Services
+namespace ProductNS.Application.Services
 {
     public interface IProductService
     {

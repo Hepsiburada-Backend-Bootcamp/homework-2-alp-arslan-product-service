@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductApi.Dtos;
-using ProductApi.Exceptions;
-using ProductApi.Models;
-using ProductApi.Services;
+using ProductNS.Application.Dtos;
+using ProductNS.Application.Exceptions;
+using ProductNS.Application.Services;
+using ProductNS.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

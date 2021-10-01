@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProductApi.Exceptions
+namespace ProductNS.Application.Exceptions
 {
-    public abstract class NotFoundException : Exception
+    public abstract class BadRequestException : Exception
     {
-        protected NotFoundException(string message)
+        protected BadRequestException(string message)
             : base(message)
         {
         }
