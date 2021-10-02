@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using ProductNS.Application.Dtos;
 using ProductNS.Application.Exceptions;
 using ProductNS.Domain.Models;
-using ProductNS.Infrastructure.Context;
+using ProductNS.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +12,12 @@ namespace ProductNS.Application.Services
 {
     public class ProductService : IProductService
     {
-        //TODO: Make a repository for ProductContext
-        private readonly ProductContext _context;
+        private readonly IProductRepository _repository;
         private readonly IMapper _mapper;
 
-        public ProductService(ProductContext context, IMapper mapper)
+        public ProductService(IProductRepository repository, IMapper mapper)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
 
@@ -27,27 +25,23 @@ namespace ProductNS.Application.Services
         {
             Product product = _mapper.Map<CreateProductDto, Product>(dto);
             product.DateOfCreation = product.DateOfLastEdit = DateTime.Now;
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-
-            return product.Id;
+            return await _repository.AddAsync(product);
         }
 
         public async Task<bool> DeleteProduct(int id)
         {
-            Product product = await _context.Products.FindAsync(id);
+            Product product = await _repository.FindByIdAsync(id);
             if (product == null)
                 return false;
 
-            _context.Remove(product);
-            await _context.SaveChangesAsync();
+            await _repository.DeleteAsync(product);
             return true;
         }
 
         public async Task<ProductDto> GetProduct(int id)
         {
 
-            var product = await _context.Products.FindAsync(id);
+            var product = await _repository.FindByIdAsync(id);
 
             if (product == null)
             {
@@ -59,7 +53,7 @@ namespace ProductNS.Application.Services
 
         public async Task<IEnumerable<ProductDto>> GetProducts(string sortParameter)
         {
-            List<Product> products = await _context.Products.ToListAsync();
+            List<Product> products = await _repository.GetAllAsync();
 
             if (string.IsNullOrWhiteSpace(sortParameter))
                 throw new ArgumentNullException();
@@ -87,7 +81,7 @@ namespace ProductNS.Application.Services
 
         public async Task<IEnumerable<Product>> GetProductsAdmin()
         {
-            return await _context.Products.ToListAsync();
+            return await _repository.GetAllAsync();
         }
 
         public async Task UpdateProduct(int id, UpdateProductDto dto)
@@ -95,15 +89,14 @@ namespace ProductNS.Application.Services
             if (id != dto.Id)
                 throw new IdDoesNotBelongToProductExcepiton(id, dto.Name);
 
-            bool exists = await _context.Products.AnyAsync(e => e.Id == id);
+            bool exists = await _repository.AnyAsync(id);
             if (!exists)
                 throw new ProductNotFoundException(id);
 
-            Product product = await _context.Products.FindAsync(id);
+            Product product = await _repository.FindByIdAsync(id);
             product = _mapper.Map(dto, product);
             product.DateOfLastEdit = DateTime.Now;
-            _context.Entry(product).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            await _repository.UpdateAsync(product);
         }
     }
 }

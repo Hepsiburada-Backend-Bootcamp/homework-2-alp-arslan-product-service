@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ProductNS.Domain.Repositories;
 using ProductNS.Infrastructure.Context;
+using ProductNS.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +33,7 @@ namespace ProductNS.Infrastructure
             //Displays detailed error pages
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            //TODO: Implement and add repositories
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             return services;
         }
