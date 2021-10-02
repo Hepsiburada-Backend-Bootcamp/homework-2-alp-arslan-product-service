@@ -14,7 +14,7 @@ namespace ProductNS.Infrastructure.Context
         public ProductContext(DbContextOptions<ProductContext> options)
             : base(options)
         {
-            AddDummyData();
+            //AddDummyData();
         }
 
         public DbSet<Category> Categories { get; set; }
