@@ -2,7 +2,7 @@
 
 ## Swagger Documentation:
 
-TBD
+https://app.swaggerhub.com/apis-docs/alprsln/product-service-api/v1
 
 ---
 ## Prequisites:

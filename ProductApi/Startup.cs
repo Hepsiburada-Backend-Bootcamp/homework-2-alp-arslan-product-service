@@ -37,9 +37,9 @@ namespace ProductApi
                 c.SwaggerDoc("v1", new OpenApiInfo
                 { 
                     Version = "v1",
-                    Title = "Product API",
-                    Description = "A simple API that is responsible for delivering" +
-                        "product information for the e-commerce website Hepsinerede."
+                    Title = "Product Service API",
+                    Description = "A service that is responsible for managing product, category, " +
+                        "brand information for the e-commerce website Hepsinerede"
                 });
             });
         }
@@ -56,7 +56,7 @@ namespace ProductApi
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Product API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Product Service API v1");
                 c.RoutePrefix = string.Empty;
             });
 
