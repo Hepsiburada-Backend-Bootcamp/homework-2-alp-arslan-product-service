@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,8 +12,10 @@ namespace ProductNS.Domain.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
-        //TODO: Make the category enum
-        public string Category { get; set; }
+        [ForeignKey("CategoryId")]
+        public virtual Category Category { get; set; }
+        [ForeignKey("BrandId")]
+        public virtual Brand Brand { get; set; }
         public DateTime DateOfCreation { get; set; }
         public DateTime DateOfLastEdit { get; set; }
     }
