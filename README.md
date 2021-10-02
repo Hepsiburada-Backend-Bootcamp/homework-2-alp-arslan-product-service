@@ -1,3 +1,49 @@
+# Product Service
+
+## Swagger Documentation:
+
+TBD
+
+---
+## Prequisites:
+- Visual Studio or VScode with the necessary packages
+- Docker desktop
+
+---
+
+## Setting up Postgresql database:
+
+1) Download and start docker desktop 
+
+2) Navigate to the `homework-2-alp-arslan-product-service` directory and run docker compose
+
+```bash
+docker compose up
+```
+
+3) Navigate to `Product.infrastructure` and update the database with
+
+```bash
+dotnet ef --startup-project ../ProductApi database update
+```
+
+4) You can access the admin panel by going to `localhost:5050`. Log in and add a new server connection with values:
+```yml
+email: root@hepsinerede.com
+password: toor
+
+host name: postgresql
+port: 5432
+username: postgres
+password: toor
+```
+
+5) Or you can inject a cli into the postgres container and access the database by running the command below
+
+```bash
+psql -h localhost -U postgres
+```
+
 # 2. Hafta Ödev
 Restful Api Geliştirin
 

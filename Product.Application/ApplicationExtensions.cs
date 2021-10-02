@@ -21,7 +21,7 @@ namespace ProductNS.Application
 
             services.AddInfrastructureModule(configuration);
             
-            return services;
+            return services; 
         }
     }
 }
