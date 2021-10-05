@@ -2,10 +2,7 @@
 using ProductNS.Domain.Models;
 using ProductNS.Domain.Repositories;
 using ProductNS.Infrastructure.Context;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProductNS.Infrastructure.Repositories

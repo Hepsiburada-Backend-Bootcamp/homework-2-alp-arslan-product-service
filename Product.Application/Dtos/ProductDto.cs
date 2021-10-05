@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ProductNS.Application.Dtos
+﻿namespace ProductNS.Application.Dtos
 {
     public class ProductDto
     {

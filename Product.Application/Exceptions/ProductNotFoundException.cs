@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ProductNS.Application.Exceptions
+﻿namespace ProductNS.Application.Exceptions
 {
     public sealed class ProductNotFoundException : NotFoundException
     {
