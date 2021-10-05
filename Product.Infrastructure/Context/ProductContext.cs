@@ -10,7 +10,6 @@ namespace ProductNS.Infrastructure.Context
 {
     public class ProductContext : DbContext
     {
-        //Mock in-memory DB, I implemented it to work async
         public ProductContext(DbContextOptions<ProductContext> options)
             : base(options)
         {
@@ -25,7 +24,7 @@ namespace ProductNS.Infrastructure.Context
         {
             //This is a very bad way of filling the db,
             //Because of the scope, this method is called for every request.
-            //TODO: Refractor this ASAP
+            //TODO: Refactor this ASAP
             if (Products.Any())
                 return;
             Categories.AddRange(

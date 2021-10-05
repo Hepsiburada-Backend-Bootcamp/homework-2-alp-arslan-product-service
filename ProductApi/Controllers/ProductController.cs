@@ -55,7 +55,7 @@ namespace ProductApi.Controllers
             try
             {
                 int id = await _service.CreateProduct(dto);
-                //TODO: Refractor hard coded route
+                //TODO: Refactor hard coded route
                 return Created("api/v1/products/" + id, "api/v1/products/" + id);
                 
             }

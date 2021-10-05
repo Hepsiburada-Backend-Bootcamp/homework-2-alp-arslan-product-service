@@ -58,23 +58,14 @@ namespace ProductNS.Application.Services
             if (string.IsNullOrWhiteSpace(sortParameter))
                 throw new ArgumentNullException();
 
-            switch (sortParameter)
+            products = sortParameter switch
             {
-                case "id":
-                    products = products.OrderBy(p => p.Id).ToList();
-                    break;
-                case "name":
-                    products = products.OrderBy(p => p.Name).ToList();
-                    break;
-                case "price":
-                    products = products.OrderBy(p => p.Price).ToList();
-                    break;
-                case "category":
-                    products = products.OrderBy(p => p.Category).ToList();
-                    break;
-                default:
-                    break;
-            }
+                "id" => products.OrderBy(p => p.Id).ToList(),
+                "name" => products.OrderBy(p => p.Name).ToList(),
+                "price" => products.OrderBy(p => p.Price).ToList(),
+                "category" => products.OrderBy(p => p.Category).ToList(),
+                _ => products
+            };
 
             return _mapper.Map<List<Product>, IEnumerable<ProductDto>>(products);
         }
