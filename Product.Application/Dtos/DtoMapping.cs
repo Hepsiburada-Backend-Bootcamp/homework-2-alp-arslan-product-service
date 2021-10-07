@@ -10,6 +10,12 @@ namespace ProductNS.Application.Dtos
             CreateMap<Product, ProductDto>();
             CreateMap<CreateProductDto, Product>();
             CreateMap<UpdateProductDto, Product>();
+            
+            CreateMap<Category, CategoryDto>();
+            CreateMap<CreateCategoryDto, Category>();
+            
+            CreateMap<Brand, BrandDto>();
+            CreateMap<CreateBrandDto, Brand>();
         }
     }
 }

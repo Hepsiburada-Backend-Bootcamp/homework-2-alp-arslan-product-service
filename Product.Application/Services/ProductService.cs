@@ -40,7 +40,6 @@ namespace ProductNS.Application.Services
 
         public async Task<ProductDto> GetProduct(int id)
         {
-
             var product = await _repository.FindByIdAsync(id);
 
             if (product == null)
@@ -63,7 +62,7 @@ namespace ProductNS.Application.Services
                 "id" => products.OrderBy(p => p.Id).ToList(),
                 "name" => products.OrderBy(p => p.Name).ToList(),
                 "price" => products.OrderBy(p => p.Price).ToList(),
-                "category" => products.OrderBy(p => p.Category).ToList(),
+                "category" => products.OrderBy(p => p.Category.Id).ToList(),
                 _ => products
             };
 

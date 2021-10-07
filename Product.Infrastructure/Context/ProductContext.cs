@@ -11,7 +11,9 @@ namespace ProductNS.Infrastructure.Context
         public ProductContext(DbContextOptions<ProductContext> options)
             : base(options)
         {
-            AddDummyData();
+            //TODO: Refactor this method ASAP. VERY URGENT. PLEASE.
+            //Comment this out before migrating and updating db
+            //AddDummyData();
         }
 
         public DbSet<Category> Categories { get; set; }
@@ -25,38 +27,44 @@ namespace ProductNS.Infrastructure.Context
             //TODO: Refactor this ASAP
             if (Products.Any())
                 return;
+            DateTime now = DateTime.Now;
             Categories.AddRange(
                 new Category
                 {
                     Name = "Furniture",
                     Description = "Consists of large objects such as tables, chairs, " +
                     "or beds that are used in a room for sitting or lying on " +
-                    "or for putting things on or in."
+                    "or for putting things on or in.",
+                    DateOfCreation = now
                 },
                 new Category
                 {
                     Name = "Electronics",
                     Description = "is the technology of using transistors and silicon chips, " +
-                    "especially in devices such as radios, televisions, and computers."
+                    "especially in devices such as radios, televisions, and computers.",
+                    DateOfCreation = now
                 }
             );
+            SaveChanges();
 
             Brands.AddRange(
                 new Brand
                 {
                     Name = "Ikea",
                     Description = "IKEA is a global destination store for home furnishing, " +
-                    "appliances, ready-to-assemble furniture, home accessories and kitchen products."
+                    "appliances, ready-to-assemble furniture, home accessories and kitchen products.",
+                    DateOfCreation = now
                 },
                 new Brand
                 {
                     Name = "Big Phones",
                     Description = " designs, manufactures and markets smartphones, personal computers, " +
-                    "tablets, wearables and accessories, and sells a variety of related services. "
+                    "tablets, wearables and accessories, and sells a variety of related services. ",
+                    DateOfCreation = now
                 }
             );
-
-            DateTime now = DateTime.Now;
+            SaveChanges();
+            
             Products.AddRange(
                 new Product
                 {

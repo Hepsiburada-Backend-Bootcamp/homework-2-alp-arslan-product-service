@@ -19,7 +19,8 @@ namespace ProductNS.Infrastructure
 
             services.AddDbContext<ProductContext>(options =>
                 options
-                    .UseNpgsql(configuration.GetConnectionString("ProductContext"))
+                    .UseNpgsql(configuration.GetConnectionString("ProductContext"),
+                        b => b.MigrationsAssembly("ProductApi"))
                     .UseSnakeCaseNamingConvention()
                     .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
                     .EnableSensitiveDataLogging()
@@ -29,6 +30,7 @@ namespace ProductNS.Infrastructure
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             return services;
         }

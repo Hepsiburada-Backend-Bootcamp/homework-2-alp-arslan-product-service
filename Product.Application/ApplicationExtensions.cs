@@ -13,6 +13,7 @@ namespace ProductNS.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddInfrastructureModule(configuration);
             
