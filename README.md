@@ -6,7 +6,7 @@ https://app.swaggerhub.com/apis-docs/alprsln/product-service-api/v1
 
 ---
 ## Prequisites:
-- Visual Studio or VScode with the necessary packages
+- Your favourite .net 5 env. with the necessary packages
 - Docker desktop
 
 ---
@@ -23,12 +23,13 @@ docker compose up
 
 3) Navigate to `ProductApi` and update the database
 - (Migration is included in the repo)
+- (Since temp data is handled badly, one has to comment out the AddDummyData method call from `Infrastructure.Context.ProductContext` constructor before creating a new migration or updating the database)
 
 ```bash
 dotnet ef database update
 ```
 
-4) You can access the admin panel by going to `localhost:5050`. Log in and add a new server connection with values:
+4) You can access the postgresql admin panel by going to `localhost:5050`. Log in and add a new server connection with values:
 ```yml
 email: root@hepsinerede.com
 password: toor
@@ -44,20 +45,3 @@ password: toor
 ```bash
 psql -h localhost -U postgres
 ```
-
-# 2. Hafta Ödev
-Restful Api Geliştirin
-
-- Rest standartlarına uygun olmalıdır.
-- solid prensiplerine uyulmalıdır.
-- EntityFramework Core ve Dapper kullanılmalıdır.
-- En az 3 tablo olmalı ve birbir ile ilişkili olmalılardır.
-- Dependency injection kullanılmalıdır.
-- Automapper veya mapster projede kullanılmalıdır.
-- Serilog ile log işlemleri gerçekleştirilmelidir.
-- Projede swagger implementasyonu gerçekleştirilmelidir.
-- Proje docker da publish edilmelidir.
-
-# Bonus
-- Proje birden fazla db ye destek verebilmeli ve runtime da db değişikliği yapılabilmeli(design patternlerin kullanımı düşünülmelidir.)
-- Mediator pattern(mediatr kütüphanesi kullanılabilir.) tercih edilebilir. 

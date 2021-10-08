@@ -14,6 +14,7 @@ namespace ProductNS.Application
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IBrandService, BrandService>();
 
             services.AddInfrastructureModule(configuration);
             

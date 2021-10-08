@@ -10,7 +10,7 @@ using ProductNS.Infrastructure.Context;
 namespace ProductApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20211007234458_AddLookupTables")]
+    [Migration("20211008100728_AddLookupTables")]
     partial class AddLookupTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
