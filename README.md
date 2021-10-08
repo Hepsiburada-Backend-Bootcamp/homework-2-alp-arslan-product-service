@@ -21,10 +21,11 @@ https://app.swaggerhub.com/apis-docs/alprsln/product-service-api/v1
 docker compose up
 ```
 
-3) Navigate to `Product.infrastructure` and update the database with
+3) Navigate to `ProductApi` and update the database
+- (Migration is included in the repo)
 
 ```bash
-dotnet ef --startup-project ../ProductApi database update
+dotnet ef database update
 ```
 
 4) You can access the admin panel by going to `localhost:5050`. Log in and add a new server connection with values:
